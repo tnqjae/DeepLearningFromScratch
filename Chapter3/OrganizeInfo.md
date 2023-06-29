@@ -43,13 +43,13 @@ $$
 
 계단 함수 그래프
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eac6d6c1-5a54-4da0-8b73-664e695b6ca1/Untitled.png)
+![Untitled](./stepfunction.png)
 
 ## 시그모이드 함수
 
 시그모이드 함수의 수식이다. exp(-x)는 e^-x을 의미한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7cbe4fda-6589-4cbc-93fe-27e5a57af140/Untitled.png)
+![Untitled](./sigmpidfunction.png)
 
 ### 시그모이드 함수와 계단 함수의 차이점
 
@@ -68,3 +68,10 @@ y(x) = ax( a= c^3)인 식과 동일하다. 따라서 선형 함수를 사용하�
 ## ReLU 함수
 
 입력이 0이하면 모두 0을 반환, 0 초과이면 값을 그대로 반환
+$$
+h(x) = \begin{cases} 
+  0 (x\leq 0)\\
+  1 (x > 0)
+\end{cases}
+$$
+
