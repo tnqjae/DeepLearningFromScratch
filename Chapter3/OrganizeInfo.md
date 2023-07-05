@@ -32,12 +32,12 @@ $$
 
 활성화 함수는 임계값을 경계로 출력이 바뀌는데, 이런 함수를 계단 함수라고 한다.
 계단 함수 그래프
-![Untitled](./stepfunction.png)
+![Untitled](./img/stepfunction.png)
 
 ## 시그모이드 함수
 
 시그모이드 함수의 수식이다. exp(-x)는 e^-x을 의미한다.
-![Untitled](./sigmpidfunction.png)
+![Untitled](./img/sigmpidfunction.png)
 
 ### 시그모이드 함수와 계단 함수의 차이점
 
@@ -60,7 +60,7 @@ h(x) = \begin{cases}
 \end{cases}
 $$
 
-![Untitled](./ReLUGraph.png)
+![Untitled](./img/ReLUGraph.png)
 --------------------------------------------------------------------------------
 # 출력층 설계
 회귀에는 항등 함수,분류에는 소프트맥스 함수 사용
