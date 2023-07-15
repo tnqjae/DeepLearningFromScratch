@@ -1,7 +1,7 @@
 import sys, os
 sys.path.append(os.pardir)
 from functions import *
-from GradientEx import numberical_gradient
+from GradientEx import numerical_gradient
 import numpy as np
 
 class TwoLayerNet:
@@ -52,14 +52,14 @@ class TwoLayerNet:
     
     #수치 미분으로 기울기를 구함, 시간이 오래 걸림
     #고속으로 수행하고 싶다면 오차역전파를 이용해서 계산해야함.
-    def numberical_gradient(self, x, t):
+    def numerical_gradient(self, x, t):
         loss_W = lambda W: self.loss(x,t)
 
         grads = {}
-        grads['W1'] = numberical_gradient(loss_W, self.params['W1'])
-        grads['b1'] = numberical_gradient(loss_W, self.params['b1'])
-        grads['W2'] = numberical_gradient(loss_W, self.params['W2'])
-        grads['b2'] = numberical_gradient(loss_W, self.params['b2'])
+        grads['W1'] = numerical_gradient(loss_W, self.params['W1'])
+        grads['b1'] = numerical_gradient(loss_W, self.params['b1'])
+        grads['W2'] = numerical_gradient(loss_W, self.params['W2'])
+        grads['b2'] = numerical_gradient(loss_W, self.params['b2'])
 
         return grads
     
