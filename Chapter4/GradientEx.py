@@ -1,6 +1,6 @@
 import numpy as np
 
-def numberical_gradient(f, x):
+def numerical_gradient(f, x):
     h = 1e-4 # 0.0001
     grad = np.zeros_like(x)
     
