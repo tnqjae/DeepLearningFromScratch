@@ -1,6 +1,7 @@
 import sys, os
 sys.path.append(os.pardir)
 from GradientDescent import numberical_gradient
+from CrossEntropyError import  cross_entropy_error
 import numpy as np
 
 def sigmoid(x):
@@ -43,14 +44,21 @@ class TwoLayerNet:
 
         return y
     
-    #손실 함수 값을 구함, x는 이미지 데이터, t는 정답 레이블
-    def loss(self, x, t):
+    #정확도를 구하는 메서드
+    def accuracy(self, x, t):
         y = self.predict(x)
         y = np.argmax(y, axis=1)
         t = np.argmax(t, axis=1)
-
+        
         accuracy = np.sum(y == t) / float(x.shape[0])
+        
         return accuracy
+
+    #손실 함수 값을 구함, x는 이미지 데이터, t는 정답 레이블
+    def loss(self, x, t):
+        y = self.predict(x)
+
+        return cross_entropy_error(y, t)
     
     #수치 미분으로 기울기를 구함, 시간이 오래 걸림
     #고속으로 수행하고 싶다면 오차역전파를 이용해서 계산해야함.
