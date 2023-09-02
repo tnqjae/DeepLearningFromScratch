@@ -12,7 +12,7 @@ class Convolution:
         FN, C, FH, FW = self.W.shape
         N, C, H, W = x.shape
         out_h = int(1 + (H + 2 * self.pad - FW) / self.stride)
-        out_w = int(1 + (W + 2 * self.pad - Fw) / self.stride)
+        out_w = int(1 + (W + 2 * self.pad - FW) / self.stride)
 
         col = im2col(x, FH, FW, self.stride, self.pad)
         col_W = self.W.reshape(FN, -1).T
