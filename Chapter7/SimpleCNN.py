@@ -2,6 +2,11 @@ import numpy as np
 from util import im2col
 from collections import OrderedDict
 from Conv import Convolution
+from Chapter5.BPrelu import Relu
+from Pooling import Pooling
+from Chapter5.Affine import Affine
+
+
 class SimpleConvNet:
     #초기화
     def __init__(self, input_dim=(1, 28, 28),
@@ -37,3 +42,12 @@ class SimpleConvNet:
                                       self.params['b1'],
                                       conv_param['stride'],
                                       conv_param['pad'])
+            
+            self.layers['Relu1'] = Relu()
+            self.layers['Pool1'] = Pooling(pool_h=2, pool_w=2, stride=2)
+            self.layers['Affine1'] = Affine(self.params['W2'], self.params['b2'])
+            
+            self.layers['Relue2'] = Relu()
+            self.layers['Affine2'] = Affine(self.params['W3'], self.params['b3'])
+
+            self.last_layer = SoftmaxWithLoss()
