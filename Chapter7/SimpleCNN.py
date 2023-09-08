@@ -5,7 +5,7 @@ from Conv import Convolution
 from Chapter5.BPrelu import Relu
 from Pooling import Pooling
 from Chapter5.Affine import Affine
-
+from Chapter5.SoftmaxWithLoss import SoftmaxWithLoss
 
 class SimpleConvNet:
     #초기화
@@ -51,3 +51,36 @@ class SimpleConvNet:
             self.layers['Affine2'] = Affine(self.params['W3'], self.params['b3'])
 
             self.last_layer = SoftmaxWithLoss()
+
+    def predict(self, x):
+        for layer in self.layers.values():
+            x = layer.forward(x)
+        return x
+    
+    def loss(self, x, t):
+         y= self.predict(x)
+         return self.last_layer.forward(y, t)
+    
+    def gadient(self, x, t):
+        self.loss(x, t)
+
+        dout = 1
+        dout = self.last_layer.backward(dout)
+
+        layers= list(self.layers.values())
+        layers.reverse()
+        
+        for layer in layers:
+            dout = layer.backward(dout)
+
+        grads = {}
+        grads['W1'] = self.layers['Conv1'].dW
+        grads['b1'] = self.layers['Conv1'].db
+        grads['W2'] = self.layers['Affine1'].dW
+        grads['b2'] = self.layers['Affine1'].db
+        grads['W3'] = self.layers['Affine1'].dW
+        grads['b3'] = self.layers['Affine1'].db
+
+        return grads
+
+        
